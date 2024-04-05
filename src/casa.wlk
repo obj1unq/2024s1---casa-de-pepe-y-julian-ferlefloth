@@ -5,7 +5,7 @@ object casaDePepeYJulian {
 	
 	method monto(){
 		return monto
-	}
+	} 
 	 method tieneViveresSuficientes(){
 		return porcentajeDeViveres > 40 	
 	 }
