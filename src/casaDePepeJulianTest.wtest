@@ -1,0 +1,11 @@
+import casa.*
+describe "casaDePepeJulian"{
+	
+	test "Hacer que se rompa algo de 1000 pesos de la casa, aumentando el monto de reparación" {
+		casaDePepeYJulian.rompe(1000)
+		assert.equals(1000, casaDePepeYJulian.monto())
+		assert.equals(true, casaDePepeYJulian.tieneViveresSuficientes())
+		assert.equals(true, casaDePepeYJulian.hayQueHacerReparaciones())
+		assert.equals(false, casaDePepeYJulian.estaEnOrden())
+	}
+}
