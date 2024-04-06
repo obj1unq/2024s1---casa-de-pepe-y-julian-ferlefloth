@@ -59,9 +59,19 @@ object casaDePepeYJulian {
 		return !self.hayQueHacerReparaciones() && self.tieneViveresSuficientes()
 	}
 	
-	method rompe(montoAlRomper){
+	/*method rompe(montoAlRomper){
 		monto = monto + montoAlRomper
 		self.descuentaMontoEnCuentaBancaria(monto) 
+	}*/
+	
+	method hacerMantenimiento(montoEnPesos){
+		monto = monto + montoEnPesos
+		self.descuentaMontoEnCuentaBancaria(monto) 
+	}
+	
+	method hacerMantenimientoSemanal(){
+		porcentajeDeViveres = porcentajeDeViveres + estrategiaAhorro.comprarViveresFaltantes()
+		self.hacerMantenimiento(estrategiaAhorro.gastar())
 	}
 }
 
@@ -84,8 +94,6 @@ object cuentaCorriente{
 	method extraer(monto){
 		saldo = saldo - monto
 	}
-	
-	
 }
 
 object cuentaConGastos{
@@ -138,27 +146,46 @@ object cuentaCombinada{
 
 object minimoIndispensable{
 	var calidad = 0
-	var porcentajeAComprar = self.porcentajeAComprar()
+	var porcentaje = self.porcentajeDeViveresFaltantes()
 	
-	method porcentajeAComprar(){
+	method comprarViveresFaltantes(){
+		
+		if(!casaDePepeYJulian.tieneViveresSuficientes()){
+			return porcentaje
+		}else{
+			return porcentaje
+		}
+		
+	}
+	
+	method porcentajeDeViveresFaltantes(){
 		return casaDePepeYJulian.porcentajeDeViveres() - 40
 	}
 	
 	method gastar(){
-		if ( !casaDePepeYJulian.tieneViveresSuficientes() ) {
-			return  porcentajeAComprar * calidad;
-		} else {
-			return 0
-		}
+			return  porcentaje * calidad
 	}
 }
 
 object full{
 	var calidad = 5
-	var porcentaje = casaDePepeYJulian.porcentajeDeViveres()
+	var porcentaje = self.porcentajeDeViveresFaltantes()
 		
-	method porcentajeDeViveres(){
+	method comprarViveresFaltantes(){
+		
+		if(casaDePepeYJulian.estaEnOrden()){
+			return porcentaje
+		}else{
+			return self.porcentajeMinimoDeViveresFaltantes()
+		}
+	}	
+		
+	method porcentajeDeViveresFaltantes(){
 		return casaDePepeYJulian.porcentajeDeViveres() - 100
+	}
+	
+	method porcentajeMinimoDeViveresFaltantes(){
+		return casaDePepeYJulian.porcentajeDeViveres() - 40
 	}
 	
 	method gastar(){

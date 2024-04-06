@@ -2,7 +2,7 @@ import casa.*
 describe "casaDePepeJulian"{
 	
 	test "Hacer que se rompa algo de 1000 pesos de la casa, aumentando el monto de reparación" {
-		casaDePepeYJulian.rompe(1000)
+		casaDePepeYJulian.hacerMantenimiento(1000)
 		assert.equals(1000, casaDePepeYJulian.monto())
 		assert.equals(true, casaDePepeYJulian.tieneViveresSuficientes())
 		assert.equals(true, casaDePepeYJulian.hayQueHacerReparaciones())
@@ -32,7 +32,7 @@ Verificar que el saldo de la cuenta con gastos queda en 50 pesos, la cuenta corr
 	
 	test "Se pide poder generar un gasto por un importe determinado en la casa, y que eso se vea afectado en la cuenta elegida previamente."{
 		cuentaCorriente.setSaldo(500)
-		casaDePepeYJulian.rompe(30)
+		casaDePepeYJulian.hacerMantenimiento(30)
 		assert.equals(30, casaDePepeYJulian.monto())
 		assert.equals(470, casaDePepeYJulian.saldoCuentaBancaria())
 	}
@@ -42,7 +42,7 @@ Verificar que el saldo de la cuenta con gastos queda en 50 pesos, la cuenta corr
 		casaDePepeYJulian.setCuentaBancaria(cuentaCorriente)
 		cuentaCorriente.setSaldo(1000)
 		casaDePepeYJulian.setEstrategia(full)
-		casaDePepeYJulian.mantenimiento(100)
+		casaDePepeYJulian.hacerMantenimientoSemanal(100)
 		
 	}
 }
