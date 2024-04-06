@@ -31,10 +31,19 @@ Verificar que el saldo de la cuenta con gastos queda en 50 pesos, la cuenta corr
 	
 	
 	test "Se pide poder generar un gasto por un importe determinado en la casa, y que eso se vea afectado en la cuenta elegida previamente."{
-				cuentaCorriente.setSaldo(500)
-				casaDePepeYJulian.rompe(30)
-				assert.equals(30, casaDePepeYJulian.monto())
-				assert.equals(470, casaDePepeYJulian.saldoCuentaBancaria())
+		cuentaCorriente.setSaldo(500)
+		casaDePepeYJulian.rompe(30)
+		assert.equals(30, casaDePepeYJulian.monto())
+		assert.equals(470, casaDePepeYJulian.saldoCuentaBancaria())
+	}
+	
+	test"Si la casa tiene 50% de los víveres, necesita 100 pesos para reparaciones, tiene asociada la cuenta corriente con 1000 pesos de saldo y una estrategia de ahorro Full. Al hacer un mantenimiento de la casa"{
+		casaDePepeYJulian.setPorcentajeDeViveres(50)
+		casaDePepeYJulian.setCuentaBancaria(cuentaCorriente)
+		cuentaCorriente.setSaldo(1000)
+		casaDePepeYJulian.setEstrategia(full)
+		casaDePepeYJulian.mantenimiento(100)
+		
 	}
 }
  
