@@ -41,7 +41,7 @@ Verificar que el saldo de la cuenta con gastos queda en 50 pesos, la cuenta corr
 		casaDePepeYJulian.setPorcentajeDeViveres(50)
 		casaDePepeYJulian.setCuentaBancaria(cuentaCorriente)
 		cuentaCorriente.setSaldo(1000)
-		casaDePepeYJulian.setEstrategia(full)
+		casaDePepeYJulian.setEstrategia(full) 
 		casaDePepeYJulian.hacerMantenimientoSemanal() 
 		
 	}
