@@ -1,4 +1,8 @@
 import casa.*
+import estrategiasDeAhorro.*
+import cuentasBancarias.*
+
+
 describe "casaDePepeJulian"{
 	
 	test "Hacer que se rompa algo de 1000 pesos de la casa, aumentando el monto de reparación" {
@@ -42,7 +46,14 @@ Verificar que el saldo de la cuenta con gastos queda en 50 pesos, la cuenta corr
 		casaDePepeYJulian.setCuentaBancaria(cuentaCorriente)
 		cuentaCorriente.setSaldo(1000)
 		casaDePepeYJulian.setEstrategia(full) 
-		casaDePepeYJulian.hacerMantenimientoSemanal() 
+		casaDePepeYJulian.mantenimientoSemanal() 
+		assert.equals(40, casaDePepeYJulian.porcentajeDeViveres())
+		assert.equals(true, casaDePepeYJulian.hayQueHacerReparaciones())
+		assert.equals(true ,casaDePepeYJulian.monto() > 1000)
+		
+		assert.equals(90,casaDePepeYJulian.porcentajeDeViveres())
+		assert.equals(100,casaDePepeYJulian.monto())
+		assert.equals(800,casaDePepeYJulian.saldoCuentaBancaria())
 		
 	}
 }
